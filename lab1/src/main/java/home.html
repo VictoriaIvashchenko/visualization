@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Візуалізація графіків</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Візуалізація графіків</h1>
+
+<h2>Протягом наступних десяти років прогнозується зменшення кількості навчальних закладів</h2>
+<canvas id="chart1"></canvas>
+
+<h2>Більшість співробітників отримує зарплату від 10 до 15 тис. гривень</h2>
+<canvas id="chart2"></canvas>
+
+<h2>Підвищення ціни на окремі сорти бензину не означає підвищення їх якості</h2>
+<canvas id="chart3"></canvas>
+
+<h2>У вересні рівень плинності кадрів у шести підрозділах був приблизно одинаковий</h2>
+<canvas id="chart4"></canvas>
+
+<h2>Продавець магазину проводить з клієнтами лише 15% свого робочого часу</h2>
+<canvas id="chart5"></canvas>
+
+<h2>Розмір надбавки до зарплати не залежить від трудового стажу</h2>
+<canvas id="chart6"></canvas>
+
+<h2>Торік найбільша плинність кадрів спостерігається у віковій групі від 30 до 35 років</h2>
+<canvas id="chart7"></canvas>
+
+<h2>Центральний регіон займає останнє місце з народжуваності</h2>
+<canvas id="chart8"></canvas>
+
+<h2>Прибутковість акцій нашої компанії скорочується</h2>
+<canvas id="chart9"></canvas>
+
+<h2>Найбільша частина фондів задіяна у виробництві</h2>
+<canvas id="chart10"></canvas>
+
+<h2>Спостерігається зв'язок між доходами і зарплатою</h2>
+<canvas id="chart11"></canvas>
+
+<h2>У серпні два студенти обігнали за успішністю шість інших</h2>
+<canvas id="chart12"></canvas>
+
+<script>
+    var ctx1 = document.getElementById('chart1').getContext('2d');
+    var chart1 = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: ['2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033'],
+            datasets: [{
+                label: 'Кількість навчальних закладів',
+                data: [1000, 950, 900, 850, 800, 750, 700, 650, 600, 550],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false
+            }]
+        }
+    });
+
+    var ctx2 = document.getElementById('chart2').getContext('2d');
+    var chart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['До 10 тис. грн', '10-15 тис. грн', 'Більше 15 тис. грн'],
+            datasets: [{
+                label: 'Кількість співробітників',
+                data: [5, 50, 10],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    var ctx3 = document.getElementById('chart3').getContext('2d');
+    var chart3 = new Chart(ctx3, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Ціна vs Якість',
+                data: [
+                    {x: 20, y: 50},
+                    {x: 30, y: 55},
+                    {x: 40, y: 53},
+                    {x: 50, y: 54},
+                    {x: 60, y: 52},
+                    {x: 70, y: 50}
+                ],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: { title: { display: true, text: 'Ціна' } },
+                y: { title: { display: true, text: 'Якість' } }
+            }
+        }
+    });
+
+    var ctx4 = document.getElementById('chart4').getContext('2d');
+    var chart4 = new Chart(ctx4, {
+        type: 'bar',
+        data: {
+            labels: ['Підрозділ 1', 'Підрозділ 2', 'Підрозділ 3', 'Підрозділ 4', 'Підрозділ 5', 'Підрозділ 6'],
+            datasets: [{
+                label: 'Рівень плинності кадрів',
+                data: [12, 13, 12, 14, 13, 12],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+
+    var ctx5 = document.getElementById('chart5').getContext('2d');
+    var chart5 = new Chart(ctx5, {
+        type: 'doughnut',
+        data: {
+            labels: ['Час з клієнтами', 'Інший час'],
+            datasets: [{
+                data: [15, 85],
+                backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                borderColor: ['rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    var ctx6 = document.getElementById('chart6').getContext('2d');
+    var chart6 = new Chart(ctx6, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Стаж vs Надбавка',
+                data: [
+                    {x: 1, y: 1000},
+                    {x: 5, y: 1000},
+                    {x: 10, y: 1000},
+                    {x: 15, y: 1000},
+                    {x: 20, y: 1000}
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: { title: { display: true, text: 'Стаж (роки)' } },
+                y: { title: { display: true, text: 'Надбавка (грн)' } }
+            }
+        }
+    });
+
+    var ctx7 = document.getElementById('chart7').getContext('2d');
+    var chart7 = new Chart(ctx7, {
+        type: 'bar',
+        data: {
+            labels: ['20-25 років', '25-30 років', '30-35 років', '35-40 років', '40-45 років'],
+            datasets: [{
+                label: 'Плинність кадрів',
+                data: [5, 10, 20, 7, 4],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+
+    var ctx8 = document.getElementById('chart8').getContext('2d');
+    var chart8 = new Chart(ctx8, {
+        type: 'bar',
+        data: {
+            labels: ['Західний', 'Східний', 'Південний', 'Північний', 'Центральний'],
+            datasets: [{
+                label: 'Народжуваність',
+                data: [100, 80, 90, 85, 70],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+
+    var ctx9 = document.getElementById('chart9').getContext('2d');
+    var chart9 = new Chart(ctx9, {
+        type: 'line',
+        data: {
+            labels: ['2020', '2021', '2022', '2023'],
+            datasets: [{
+                label: 'Прибутковість акцій (%)',
+                data: [15, 12, 8, 5],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false
+            }]
+        }
+    });
+
+    var ctx10 = document.getElementById('chart10').getContext('2d');
+    var chart10 = new Chart(ctx10, {
+        type: 'doughnut',
+        data: {
+            labels: ['Виробництво', 'Дослідження', 'Адміністрація'],
+            datasets: [{
+                data: [60, 25, 15],
+                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    var ctx11 = document.getElementById('chart11').getContext('2d');
+    var chart11 = new Chart(ctx11, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Доходи vs Зарплата',
+                data: [
+                    {x: 20000, y: 3000},
+                    {x: 40000, y: 5000},
+                    {x: 60000, y: 7000},
+                    {x: 80000, y: 9000},
+                    {x: 100000, y: 11000}
+                ],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: { title: { display: true, text: 'Доходи (грн)' } },
+                y: { title: { display: true, text: 'Зарплата (грн)' } }
+            }
+        }
+    });
+
+    var ctx12 = document.getElementById('chart12').getContext('2d');
+    var chart12 = new Chart(ctx12, {
+        type: 'bar',
+        data: {
+            labels: ['Студент 1', 'Студент 2', 'Студент 3', 'Студент 4', 'Студент 5', 'Студент 6', 'Студент 7', 'Студент 8'],
+            datasets: [{
+                label: 'Успішність',
+                data: [85, 88, 70, 72, 75, 78, 90, 92],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+</body>
+</html>
